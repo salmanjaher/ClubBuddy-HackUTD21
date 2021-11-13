@@ -19,23 +19,38 @@ function Body() {
     };
     fetchData();
   }, []);
+
+  const handleBack = () => {
+    setLoginPage(true);
+    setSignUp(false);
+    setLogin(false);
+  };
+
   if (loginPage) {
     return (
       <>
-      <button onClick={()=>{
-        setLoginPage(false);
-        setSignUp(true);
-      }}>Sign Up</button>
-      <button onClick={()=>{
-        setLoginPage(false);
-        setLogin(true);
-      }}>Sign In</button>
+        <button
+          onClick={() => {
+            setLoginPage(false);
+            setSignUp(true);
+          }}
+        >
+          Sign Up
+        </button>
+        <button
+          onClick={() => {
+            setLoginPage(false);
+            setLogin(true);
+          }}
+        >
+          Sign In
+        </button>
       </>
     );
   } else if (login) {
-    return <Login />;
+    return <Login handleBack={handleBack} />;
   } else if (signUp) {
-    return <SignUp />;
+    return <SignUp handleBack={handleBack} />;
   } else {
     return (
       <>

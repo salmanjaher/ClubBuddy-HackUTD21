@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Login() {
+function Login({ handleBack }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -31,6 +31,7 @@ function Login() {
         </label>
         <br />
         <input type='submit' value='Submit' />
+        <button onClick={handleBack}>Back</button>
       </form>
     </>
   );
