@@ -6,6 +6,7 @@ import SignUp from './SignUp.js';
 const apiUrl = 'https://api.presence.io/utdallas/v1/organizations';
 
 function Body() {
+  const [loginPage, setLoginPage] = useState(true);
   const [clubData, setClubData] = useState([]);
   const [login, setLogin] = useState(false);
   const [signUp, setSignUp] = useState(false);
@@ -18,13 +19,21 @@ function Body() {
     };
     fetchData();
   }, []);
-
-  if (login) {
+  if (loginPage) {
     return (
       <>
-        <Login />
+      <button onClick={()=>{
+        setLoginPage(false);
+        setSignUp(true);
+      }}>Sign Up</button>
+      <button onClick={()=>{
+        setLoginPage(false);
+        setLogin(true);
+      }}>Sign In</button>
       </>
     );
+  } else if (login) {
+    return <Login />;
   } else if (signUp) {
     return <SignUp />;
   } else {
