@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Club from './Club.js';
+import Login from './Login.js';
+import SignUp from './SignUp.js';
 
 const apiUrl = 'https://api.presence.io/utdallas/v1/organizations';
 
 function Body() {
   const [clubData, setClubData] = useState([]);
-  const [signUp, setSignUp] = useState(true);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [login, setLogin] = useState(false);
+  const [signUp, setSignUp] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,36 +19,14 @@ function Body() {
     fetchData();
   }, []);
 
-  if (signUp) {
+  if (login) {
     return (
       <>
-        <form
-          onSubmit={(e) => {
-            return console.log(username, password), e.preventDefault();
-          }}
-        >
-          <label>
-            Username:
-            <input
-              type='text'
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
-          <br />
-          <label>
-            Password:
-            <input
-              type='text'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <br />
-          <input type='submit' value='Submit' />
-        </form>
+        <Login />
       </>
     );
+  } else if (signUp) {
+    return <SignUp />;
   } else {
     return (
       <>
