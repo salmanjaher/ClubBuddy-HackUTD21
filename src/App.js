@@ -1,6 +1,10 @@
 function App() {
   const bob = 'hello';
-  return <div>{bob}</div>;
+  return (
+    <>
+      <h1>Hello world</h1>
+    </>
+  );
 }
 
 export default App;
