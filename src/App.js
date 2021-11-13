@@ -1,7 +1,8 @@
 import './App.css';
 
 function App() {
-  return <div>Hello</div>;
+  const bob = 'hello';
+  return <div>{bob}</div>;
 }
 
 export default App;
