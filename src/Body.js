@@ -2,23 +2,40 @@ import React, { useState, useEffect } from 'react';
 import Club from './Club.js';
 import Login from './Login.js';
 import SignUp from './SignUp.js';
+import data from './login.json';
 
 const apiUrl = 'https://api.presence.io/utdallas/v1/organizations';
 
 function Body() {
+  const [loginData, setLoginData] = useState([]);
   const [loginPage, setLoginPage] = useState(true);
   const [clubData, setClubData] = useState([]);
   const [login, setLogin] = useState(false);
   const [signUp, setSignUp] = useState(false);
+  const [nameDisplay, setNameDisplay] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch(apiUrl);
-      const result = await data.json();
+      const tempdata = await fetch(apiUrl);
+      const result = await tempdata.json();
       setClubData(result);
+      setLoginData(data);
     };
     fetchData();
   }, []);
+
+  const continueFunction = (username, admin) => {
+    setNameDisplay(username);
+    setIsAdmin(admin);
+    setLogin(false);
+    setSignUp(false);
+  };
+
+  const updateLoginData = (account) => {
+    setLoginData([...loginData, account]);
+    console.log(loginData);
+  };
 
   const handleBack = () => {
     setLoginPage(true);
@@ -45,19 +62,39 @@ function Body() {
         >
           Sign In
         </button>
+        <Club clubData={clubData} />
       </>
     );
   } else if (login) {
-    return <Login handleBack={handleBack} />;
+    return (
+      <>
+        <Login
+          loginData={loginData}
+          continueFunction={continueFunction}
+          handleBack={handleBack}
+        />
+        <Club clubData={clubData} />
+      </>
+    );
   } else if (signUp) {
-    return <SignUp handleBack={handleBack} />;
+    return (
+      <>
+        <SignUp
+          updateLoginData={updateLoginData}
+          continueFunction={continueFunction}
+          handleBack={handleBack}
+        />
+        <Club clubData={clubData} />
+      </>
+    );
   } else {
     return (
       <>
         <div>
-          <div className='flex-auto'>
-            <Club clubData={clubData} />
-          </div>
+          <h1>Welcome, {nameDisplay}</h1>
+          {isAdmin ? <button>My Club</button> : <button>My Favorites</button>}
+          <button onClick={() => setLoginPage(true)}>Log Out</button>
+          <Club clubData={clubData} />
         </div>
       </>
     );
