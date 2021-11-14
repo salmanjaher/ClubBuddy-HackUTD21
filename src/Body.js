@@ -72,7 +72,7 @@ function Body() {
   } else if (loginPage) {
     return (
       <>
-        <button
+        <button class="bg-green-500 hover:bg-green-600 text-black font-bold py-1 px-3 rounded-l border-2 border-black mx-2"
           onClick={() => {
             setLoginPage(false);
             setSignUp(true);
@@ -80,7 +80,8 @@ function Body() {
         >
           Sign Up
         </button>
-        <button
+        
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1 px-3 rounded-r border-2 border-black inset-10 mx-2"
           onClick={() => {
             setLoginPage(false);
             setLogin(true);
