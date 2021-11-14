@@ -803,6 +803,16 @@ module.exports = {
       40: '40',
       50: '50',
     },
+    extend: {
+      colors: {
+        utdorange: {
+          'default': '#e87500'
+        },
+        utdgreen: {
+          'default': '#154734'
+        },
+      },
+    },
   },
   variantOrder: [
     'first',
