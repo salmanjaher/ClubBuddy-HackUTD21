@@ -4,6 +4,7 @@ import Login from './Login.js';
 import SignUp from './SignUp.js';
 import data from './login.json';
 import Announcement from './Announcement.js';
+import Favorites from './Favorites.js';
 
 const apiUrl = 'https://api.presence.io/utdallas/v1/organizations';
 
@@ -18,6 +19,7 @@ function Body() {
   const [clubEditing, setClubEditing] = useState(false);
   const [favList, setFavList] = useState(false);
   const [clubName, setClubName] = useState('');
+  const [favClubs, setFavClubs] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,6 +31,10 @@ function Body() {
     fetchData();
   }, []);
 
+  const removeFavClub = (club) => {
+    setFavClubs(favClubs.filter((item) => item !== club));
+  };
+
   const continueFunction = (username, admin, club) => {
     setNameDisplay(username);
     setIsAdmin(admin);
@@ -38,7 +44,9 @@ function Body() {
   };
 
   const updateLoginData = (account) => {
-    setLoginData([...loginData, account]);
+    if (!loginData.includes(account)) {
+      setLoginData([...loginData, account]);
+    }
   };
 
   const handleBack = () => {
@@ -47,8 +55,15 @@ function Body() {
     setLogin(false);
   };
 
+  const addFavClub = (club) => {
+    if (!favClubs.includes(club)) {
+      setFavClubs([...favClubs, club]);
+    }
+  };
+
   const handleBackAn = () => {
     setClubEditing(false);
+    setFavList(false);
   };
 
   if (clubEditing) {
@@ -60,13 +75,17 @@ function Body() {
           clubName={clubName}
           handleBackAn={handleBackAn}
         />
-        <Club clubData={clubData} />
       </>
     );
   } else if (favList) {
     return (
       <>
-        <h1>Fav list</h1>
+        <Favorites
+          handleBackAn={handleBackAn}
+          clubData={clubData}
+          favClubs={favClubs}
+          removeFavClub={removeFavClub}
+        />
       </>
     );
   } else if (loginPage) {
@@ -89,7 +108,6 @@ function Body() {
         >
           Sign In
         </button>
-        <Club clubData={clubData} />
       </>
     );
   } else if (login) {
@@ -100,7 +118,6 @@ function Body() {
           continueFunction={continueFunction}
           handleBack={handleBack}
         />
-        <Club clubData={clubData} />
       </>
     );
   } else if (signUp) {
@@ -111,7 +128,6 @@ function Body() {
           continueFunction={continueFunction}
           handleBack={handleBack}
         />
-        <Club clubData={clubData} />
       </>
     );
   } else {
@@ -120,12 +136,15 @@ function Body() {
         <div>
           <h1>Welcome, {nameDisplay}</h1>
           {isAdmin ? (
-            <button onClick={() => setClubEditing(true)}>My Club</button>
+            <div>
+              <button onClick={() => setClubEditing(true)}>My Club</button>
+              <button onClick={() => setFavList(true)}>My Favorites</button>
+            </div>
           ) : (
             <button onClick={() => setFavList(true)}>My Favorites</button>
           )}
           <button onClick={() => setLoginPage(true)}>Log Out</button>
-          <Club clubData={clubData} />
+          <Club addFavClub={addFavClub} clubData={clubData} />
         </div>
       </>
     );
