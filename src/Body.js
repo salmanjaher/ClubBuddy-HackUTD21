@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Club from './Club.js';
 import Login from './Login.js';
 import SignUp from './SignUp.js';
-
+import SearchBar from './SearchBar.js'
 const apiUrl = 'https://api.presence.io/utdallas/v1/organizations';
 
 function Body() {
@@ -62,6 +62,7 @@ function Body() {
       </>
     );
   }
+  
 }
 
 export default Body;
