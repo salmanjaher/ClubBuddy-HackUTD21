@@ -5,8 +5,8 @@ function App() {
   return (
     <>
     <div class="h-screen bg-green-100">
-      <Header />
-      <Body />
+      <Header/>
+      <Body/>
     </div>
     </>
   );

@@ -5,11 +5,12 @@ function Login({ handleBack, continueFunction, loginData }) {
   const passwordRef = React.useRef();
   var hasher = require('crypto').createHash('sha256');
 
+  
   const Field = React.forwardRef(({ label, type }, ref) => {
     return (
       <div>
-        <label>{label}</label>
-        <input ref={ref} type={type} />
+        <label class = "text-2xl">{label}</label>
+        <input class = "border-2 border-black mt-1" ref={ref} type={type} />
       </div>
     );
   });
@@ -41,13 +42,13 @@ function Login({ handleBack, continueFunction, loginData }) {
 
   return (
     <>
-      <h1> Login</h1>
+      <h1 class = "text-2xl mb-1"> Login </h1>
       <form onSubmit={handleSubmit}>
-        <Field ref={usernameRef} label='Username:' type='text' />
-        <Field ref={passwordRef} label='Password:' type='password' />
+        <Field ref={usernameRef} label='Username:' type='text'/>
+        <Field ref={passwordRef} label='Password: ' type='password'/>
         <br />
-        <input type='submit' value='Submit' />
-        <button onClick={handleBack}>Back</button>
+        <input class = "bg-green-500 hover:bg-green-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black" type='submit' value='Submit' />
+        <button class = "bg-yellow-500 hover:bg-yellow-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black ml-4" onClick={handleBack}>Back</button>
       </form>
     </>
   );

@@ -26,29 +26,29 @@ function SignUp({ handleBack, updateLoginData, continueFunction }) {
 
   return (
     <>
-      <h1> Sign Up</h1>
+      <h1 class = "text-2xl mb-1"> Sign Up</h1>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label class = "text-2xl">
           Username:
-          <input
+          <input class = "border-2 border-black ml-7"
             type='text'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
         <br />
-        <label>
+        <label class = "text-2xl">
           Password:
-          <input
+          <input class = "border-2 border-black ml-9 mt-2 mb-1"
             type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         <br />
-        <label>
+        <label class = "text-2xl">
           Are you a president of a club?
-          <input
+          <input class = "ml-2 size-xl"
             checked={check}
             onChange={() => setCheck(!check)}
             type='checkbox'
@@ -57,9 +57,9 @@ function SignUp({ handleBack, updateLoginData, continueFunction }) {
         <br />
         {check ? (
           <>
-            <label>
+            <label class = "text-2xl mt-1">
               Which Club?{' '}
-              <input
+              <input class = "border-2 border-black mt-1 mb-1"
                 value={club}
                 onChange={(e) => setClub(e.target.value)}
                 type='text'
@@ -70,8 +70,8 @@ function SignUp({ handleBack, updateLoginData, continueFunction }) {
         ) : (
           <br />
         )}
-        <input type='submit' value='Submit' />
-        <button onClick={handleBack}>Back</button>
+        <input class = "bg-green-500 hover:bg-green-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black mt-1" type='submit' value='Submit' />
+        <button class = "bg-yellow-500 hover:bg-yellow-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black ml-4 mt-1" onClick={handleBack}>Back</button>
       </form>
     </>
   );

@@ -5,8 +5,8 @@ function Announcement({ clubName, clubData, handleBackAn }) {
   const Field = React.forwardRef(({ label, type }, ref) => {
     return (
       <div>
-        <label>{label}</label>
-        <input ref={ref} type={type} />
+        <label class = "text-2xl">{label}</label>
+        <input class = "border-2 border-black mt-1 ml-1" ref={ref} type={type} />
       </div>
     );
   });
@@ -23,10 +23,10 @@ function Announcement({ clubName, clubData, handleBackAn }) {
       <div>
         <form onSubmit={handleSubmit}>
           <Field ref={announcment} label='Announcement:' type='text' />
-          <br />
-          <input type='submit' value='Submit' />
-          <br />
-          <button onClick={handleBackAn}>Back</button>
+          
+          <input class = "bg-green-500 hover:bg-green-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black mt-4" type='submit' value='Submit' />
+          
+          <button class = "bg-yellow-500 hover:bg-yellow-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black ml-4 mt-4" onClick={handleBackAn}>Back</button>
         </form>
       </div>
     </>
