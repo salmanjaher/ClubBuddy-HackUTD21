@@ -18,8 +18,8 @@ function Favorites({ favClubs, clubData, handleBackAn, removeFavClub }) {
   return (
     <>
       <div>
-        <h1>Your Favorite Clubs</h1>
-        <button onClick={handleBackAn}>Back</button>
+        <h1 class = "ml-16 font-bold text-3xl">Your Favorite Clubs</h1>
+        <button class = "mt-3 mb-3 bg-yellow-500 hover:bg-yellow-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black ml-16" onClick={handleBackAn}>Back</button>
         {array.map((item) => {
           return <FavoriteItem clubData={item} removeClub={removeFavClub} />;
         })}

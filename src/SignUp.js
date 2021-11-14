@@ -26,7 +26,7 @@ function SignUp({ handleBack, updateLoginData, continueFunction }) {
 
   return (
     <>
-      <h1 class = "text-2xl mb-1"> Sign Up</h1>
+      <h1 class = "font-bold text-2xl mb-1"> Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <label class = "text-2xl">
           Username:

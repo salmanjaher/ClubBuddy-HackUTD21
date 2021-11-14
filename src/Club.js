@@ -6,11 +6,12 @@ function Club({ clubData, addFavClub }) {
       {clubData.map((club) => {
         return (
           <>
-            <h1>Club Name:</h1>
-            <h2>{club.name}</h2>
-            {club.announcments ? <h1>Latest Anouncement:</h1> : <h1></h1>}
-            <h2>{club.announcments}</h2>
-            <button onClick={() => addFavClub(club)}>Add to favorites</button>
+            <div class = "max-w-8xl">
+            <button class = "ml-16" onClick={() => addFavClub(club)}>⭐</button>
+            <label class = "ml-2 font-bold text-xl">{club.name}</label>
+            {club.announcments ? <h1 class = "ml-24 underline">Latest Anouncement:</h1> : <h1></h1>}
+            <h2 class = "ml-24 text-red-500 italic">{club.announcments}</h2>
+            </div>
           </>
         );
       })}

@@ -20,11 +20,9 @@ function SearchBar({ clubData, addFavClub }) {
   };
 
   return (
-    <div className='container'>
-      <input
+    <div>
+      <input class = "w-1/2 border-2 border-black ml-14 h-8 mt-4"
         type='text'
-        className=' col-md-12 input'
-        style={{ marginTop: 10 }}
         onChange={(e) => onChangeHandler(e.target.value)}
         value={text}
       />

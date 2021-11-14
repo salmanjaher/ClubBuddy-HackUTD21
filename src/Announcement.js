@@ -6,7 +6,8 @@ function Announcement({ clubName, clubData, handleBackAn }) {
     return (
       <div>
         <label class = "text-2xl">{label}</label>
-        <input class = "border-2 border-black mt-1 ml-1" ref={ref} type={type} />
+        <br/>
+        <textarea class = "resize border-2 border-black mt-1 ml-1" ref={ref} type={type} />
       </div>
     );
   });
@@ -19,9 +20,9 @@ function Announcement({ clubName, clubData, handleBackAn }) {
   };
   return (
     <>
-      <h1 className='text-bold text-5xl text-center'>{clubName}</h1>
+      <h1 className='ml-20 font-bold text-4xl mb-4'>{clubName}</h1>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form class = "ml-20" onSubmit={handleSubmit}>
           <Field ref={announcment} label='Announcement:' type='text' />
           
           <input class = "bg-green-500 hover:bg-green-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black mt-4" type='submit' value='Submit' />

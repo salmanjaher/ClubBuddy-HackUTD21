@@ -152,16 +152,21 @@ function Body() {
     return (
       <>
         <div>
-          <h1>Welcome, {nameDisplay}</h1>
+          <label class = "font-bold text-4xl mb-4 ml-14"> Welcome, </label>
+          <label class = "text-4xl mb-4 italic"> {nameDisplay} </label>
           {isAdmin ? (
-            <div>
-              <button onClick={() => setClubEditing(true)}>My Club</button>
-              <button onClick={() => setFavList(true)}>My Favorites</button>
+            <div class = "ml-14 mt-4">
+              <button class = "bg-green-500 hover:bg-green-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black" onClick={() => setClubEditing(true)}>My Club</button>
+              <button class = "bg-yellow-500 hover:bg-yellow-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black ml-4" onClick={() => setFavList(true)}>My Favorites</button>
+              <button class = "bg-gray-100 hover:bg-gray-200 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black ml-4" onClick={logOutHandle}>Log Out</button>
             </div>
           ) : (
-            <button onClick={() => setFavList(true)}>My Favorites</button>
+            <div class = "ml-14 mt-4">
+            <button class = "bg-green-500 hover:bg-green-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black" onClick={() => setFavList(true)}>My Favorites</button>
+            <button class = "bg-yellow-500 hover:bg-yellow-600 text-black text-xl font-bold py-1 px-3 rounded border-2 border-black ml-4" onClick={logOutHandle}>Log Out</button>
+            </div>
           )}
-          <button onClick={logOutHandle}>Log Out</button>
+          
           <SearchBar clubData={clubData} addFavClub={addFavClub} />
         </div>
       </>

@@ -42,7 +42,7 @@ function Login({ handleBack, continueFunction, loginData }) {
 
   return (
     <>
-      <h1 class = "text-2xl mb-1"> Login </h1>
+      <h1 class = "font-bold text-2xl mb-1"> Login </h1>
       <form onSubmit={handleSubmit}>
         <Field ref={usernameRef} label='Username:' type='text'/>
         <Field ref={passwordRef} label='Password: ' type='password'/>
