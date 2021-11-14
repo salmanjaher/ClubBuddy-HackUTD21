@@ -91,7 +91,8 @@ function Body() {
   } else if (loginPage) {
     return (
       <>
-        <button class="bg-green-500 hover:bg-green-600 text-black font-bold py-1 px-3 rounded-l border-2 border-black mx-2"
+        <div class = "text-center">
+        <button class="bg-green-500 hover:bg-green-600 text-black text-2xl font-bold py-5 px-14 rounded border-2 border-black"
           onClick={() => {
             setLoginPage(false);
             setSignUp(true);
@@ -99,8 +100,7 @@ function Body() {
         >
           Sign Up
         </button>
-        
-        <button class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1 px-3 rounded-r border-2 border-black inset-10 mx-2"
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-black text-2xl font-bold py-5 px-14 rounded border-2 border-black ml-20"
           onClick={() => {
             setLoginPage(false);
             setLogin(true);
@@ -108,26 +108,31 @@ function Body() {
         >
           Sign In
         </button>
+        </div>
       </>
     );
   } else if (login) {
     return (
       <>
+        <div class = "ml-64">
         <Login
           loginData={loginData}
           continueFunction={continueFunction}
           handleBack={handleBack}
         />
+        </div>
       </>
     );
   } else if (signUp) {
     return (
       <>
+        <div class = "ml-64">
         <SignUp
           updateLoginData={updateLoginData}
           continueFunction={continueFunction}
           handleBack={handleBack}
         />
+        </div>
       </>
     );
   } else {
