@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# HackUTD 2021: ClubBuddy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Inspiration...
 
-## Available Scripts
+All of us have struggled with finding a good online source for learning and keeping up with UTD clubs that we are interested in. The only available source offered by UTD is presence.io which is outdated and very hard to use. As a result, we decided to create "Club Buddy."
 
-In the project directory, you can run:
+## What it does...
 
-### `npm start`
+Our website acts as a user-friendly way for UTD students to find a collective list of all UTD clubs as well as compile a list of their favorite clubs. It also has an Admin function for club presidents to create and post announcements for their club i.e. Next meeting date, time, and other info.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How we built it...
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+As a collective group of four, we were able to divide up the work based on specialization and utilized languages like CSS, HTML, JavaScript, React, git, and Tailwind CSS. We created the program by using VS Code and pushing and pulling code through GitHub.
 
-### `npm test`
+## Challenges we ran into...
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Learning to use Tailwind and integrating CSS in React apps was a struggle for us, made worse by very vague error messages, but we learned a lot by overcoming these challenges. Additionally, dividing the work among team members with very varying amounts of experience in React was a challenge, but as a result we all learned a lot about the framework and are more prepared to use it in the future.
 
-### `npm run build`
+## Accomplishments we are proud of...
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Honestly, we are proud that we participated in our first ever hackathon and were able to come up with such an innovative idea for such a personal problem. We are proud of being able to learn some languages and come up with adaptive solutions to some of the problems we ran into while coding this project.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## What we learned...
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+How to effectively merge git branches from multiple people contributing simultaneously, and resolve merging conflicts. Languages like HTML, CSS, and Tailwind CSS. How to effectively use VS Code.
 
-### `npm run eject`
+## What is next for Club Buddy..
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- RSS Feed for announcements
+- More robust database backend
+- Streamlined favoriting feature
+- Future event handling
