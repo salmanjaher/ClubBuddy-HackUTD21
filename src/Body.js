@@ -5,6 +5,7 @@ import SignUp from './SignUp.js';
 import data from './login.json';
 import Announcement from './Announcement.js';
 import Favorites from './Favorites.js';
+import SearchBar from './SearchBar.js';
 
 const apiUrl = 'https://api.presence.io/utdallas/v1/organizations';
 
@@ -35,12 +36,18 @@ function Body() {
     setFavClubs(favClubs.filter((item) => item !== club));
   };
 
-  const continueFunction = (username, admin, club) => {
+  const continueFunction = (username, admin, club, isNew = false) => {
     setNameDisplay(username);
     setIsAdmin(admin);
     setClubName(club);
     setLogin(false);
     setSignUp(false);
+    if (!isNew) {
+      var temp = loginData.find((person) => person['username'] === username);
+      setFavClubs(temp.favorites);
+    } else {
+      setFavClubs([]);
+    }
   };
 
   const updateLoginData = (account) => {
@@ -64,6 +71,12 @@ function Body() {
   const handleBackAn = () => {
     setClubEditing(false);
     setFavList(false);
+  };
+
+  const logOutHandle = () => {
+    var temp = loginData.find((person) => person['username'] === nameDisplay);
+    temp.favorites = favClubs;
+    setLoginPage(true);
   };
 
   if (clubEditing) {
@@ -148,8 +161,8 @@ function Body() {
           ) : (
             <button onClick={() => setFavList(true)}>My Favorites</button>
           )}
-          <button onClick={() => setLoginPage(true)}>Log Out</button>
-          <Club addFavClub={addFavClub} clubData={clubData} />
+          <button onClick={logOutHandle}>Log Out</button>
+          <SearchBar clubData={clubData} addFavClub={addFavClub} />
         </div>
       </>
     );
