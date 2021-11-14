@@ -5,6 +5,7 @@ import SignUp from './SignUp.js';
 import data from './login.json';
 import Announcement from './Announcement.js';
 import Favorites from './Favorites.js';
+import SearchBar from './SearchBar.js';
 
 const apiUrl = 'https://api.presence.io/utdallas/v1/organizations';
 
@@ -35,12 +36,18 @@ function Body() {
     setFavClubs(favClubs.filter((item) => item !== club));
   };
 
-  const continueFunction = (username, admin, club) => {
+  const continueFunction = (username, admin, club, isNew = false) => {
     setNameDisplay(username);
     setIsAdmin(admin);
     setClubName(club);
     setLogin(false);
     setSignUp(false);
+    if (!isNew) {
+      var temp = loginData.find((person) => person['username'] === username);
+      setFavClubs(temp.favorites);
+    } else {
+      setFavClubs([]);
+    }
   };
 
   const updateLoginData = (account) => {
@@ -64,6 +71,12 @@ function Body() {
   const handleBackAn = () => {
     setClubEditing(false);
     setFavList(false);
+  };
+
+  const logOutHandle = () => {
+    var temp = loginData.find((person) => person['username'] === nameDisplay);
+    temp.favorites = favClubs;
+    setLoginPage(true);
   };
 
   if (clubEditing) {
@@ -91,7 +104,8 @@ function Body() {
   } else if (loginPage) {
     return (
       <>
-        <button class="bg-green-500 hover:bg-green-600 text-black font-bold py-1 px-3 rounded-l border-2 border-black mx-2"
+        <button
+          class='bg-green-500 hover:bg-green-600 text-black font-bold py-1 px-3 rounded-l border-2 border-black mx-2'
           onClick={() => {
             setLoginPage(false);
             setSignUp(true);
@@ -99,8 +113,9 @@ function Body() {
         >
           Sign Up
         </button>
-        
-        <button class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1 px-3 rounded-r border-2 border-black inset-10 mx-2"
+
+        <button
+          class='bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1 px-3 rounded-r border-2 border-black inset-10 mx-2'
           onClick={() => {
             setLoginPage(false);
             setLogin(true);
@@ -143,8 +158,8 @@ function Body() {
           ) : (
             <button onClick={() => setFavList(true)}>My Favorites</button>
           )}
-          <button onClick={() => setLoginPage(true)}>Log Out</button>
-          <Club addFavClub={addFavClub} clubData={clubData} />
+          <button onClick={logOutHandle}>Log Out</button>
+          <SearchBar clubData={clubData} addFavClub={addFavClub} />
         </div>
       </>
     );

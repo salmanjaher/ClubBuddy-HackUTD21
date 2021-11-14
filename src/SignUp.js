@@ -8,6 +8,7 @@ function SignUp({ handleBack, updateLoginData, continueFunction }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const temp = [];
     var hasher = require('crypto').createHash('sha256');
     var passwordHash = hasher.update(password, 'utf-8').digest('hex');
     var newAccount = {
@@ -15,10 +16,11 @@ function SignUp({ handleBack, updateLoginData, continueFunction }) {
       password: passwordHash,
       isPresident: check,
       clubName: club,
+      favorites: temp,
     };
     if (username !== '' && password !== '') {
       updateLoginData(newAccount);
-      continueFunction(username, check, club);
+      continueFunction(username, check, club, true);
     }
   };
 
