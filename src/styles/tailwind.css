@@ -3,3 +3,10 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.bg-utd-orange {
+    background-color: theme('colors.utdorange.default');
+  }
+.bg-utd-green {
+    background-color: theme('colors.utdgreen.default');
+}
