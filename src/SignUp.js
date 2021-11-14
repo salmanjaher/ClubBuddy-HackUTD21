@@ -8,15 +8,17 @@ function SignUp({ handleBack, updateLoginData, continueFunction }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const temp = [];
     var newAccount = {
       username: username,
       password: password,
       isPresident: check,
       clubName: club,
+      favorites: temp,
     };
     if (username !== '' && password !== '') {
       updateLoginData(newAccount);
-      continueFunction(username, check, club);
+      continueFunction(username, check, club, true);
     }
   };
 

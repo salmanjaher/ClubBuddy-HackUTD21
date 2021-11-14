@@ -3,12 +3,14 @@
     "username": "admin",
     "password": "adminpassword",
     "isPresident": true,
-    "clubName": "180 Degrees Consulting at UTD"
+    "clubName": "180 Degrees Consulting at UTD",
+    "favorites": []
   },
   {
     "username": "user",
     "password": "userpassword",
     "isPresident": false,
-    "clubName": ""
+    "clubName": "",
+    "favorites": []
   }
 ]
