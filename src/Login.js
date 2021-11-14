@@ -3,6 +3,7 @@ import React from 'react';
 function Login({ handleBack, continueFunction, loginData }) {
   const usernameRef = React.useRef();
   const passwordRef = React.useRef();
+  var hasher = require('crypto').createHash('sha256');
 
   const Field = React.forwardRef(({ label, type }, ref) => {
     return (
@@ -15,16 +16,18 @@ function Login({ handleBack, continueFunction, loginData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    var passwordHash = hasher.update(passwordRef.current.value, 'utf-8').digest('hex');
+
     if (
       loginData.find(
         (logins) => logins['username'] === usernameRef.current.value
       ) &&
       loginData.find(
-        (logins) => logins['password'] === passwordRef.current.value
+        (logins) => logins['password'] === passwordHash
       )
     ) {
       let admin = loginData.find(
-        (logins) => logins['password'] === passwordRef.current.value
+        (logins) => logins['password'] === passwordHash
       );
       continueFunction(
         usernameRef.current.value,

@@ -9,9 +9,11 @@ function SignUp({ handleBack, updateLoginData, continueFunction }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const temp = [];
+    var hasher = require('crypto').createHash('sha256');
+    var passwordHash = hasher.update(password, 'utf-8').digest('hex');
     var newAccount = {
       username: username,
-      password: password,
+      password: passwordHash,
       isPresident: check,
       clubName: club,
       favorites: temp,
