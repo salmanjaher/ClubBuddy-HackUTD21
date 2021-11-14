@@ -4,7 +4,14 @@ function Club({ clubData }) {
   return (
     <div>
       {clubData.map((club) => {
-        return <h4>{club.name}</h4>;
+        return (
+          <>
+            <h1>Club Name:</h1>
+            <h2>{club.name}</h2>
+            {club.announcments ? <h1>Latest Anouncement:</h1> : <h1></h1>}
+            <h2>{club.announcments}</h2>
+          </>
+        );
       })}
     </div>
   );

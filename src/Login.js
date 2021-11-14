@@ -26,7 +26,11 @@ function Login({ handleBack, continueFunction, loginData }) {
       let admin = loginData.find(
         (logins) => logins['password'] === passwordRef.current.value
       );
-      continueFunction(usernameRef.current.value, admin.isPresident);
+      continueFunction(
+        usernameRef.current.value,
+        admin.isPresident,
+        admin.clubName
+      );
     } else {
       // Show a modal
     }

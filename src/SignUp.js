@@ -16,7 +16,7 @@ function SignUp({ handleBack, updateLoginData, continueFunction }) {
     };
     if (username !== '' && password !== '') {
       updateLoginData(newAccount);
-      continueFunction(username, check);
+      continueFunction(username, check, club);
     }
   };
 

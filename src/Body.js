@@ -3,6 +3,7 @@ import Club from './Club.js';
 import Login from './Login.js';
 import SignUp from './SignUp.js';
 import data from './login.json';
+import Announcement from './Announcement.js';
 
 const apiUrl = 'https://api.presence.io/utdallas/v1/organizations';
 
@@ -14,6 +15,9 @@ function Body() {
   const [signUp, setSignUp] = useState(false);
   const [nameDisplay, setNameDisplay] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
+  const [clubEditing, setClubEditing] = useState(false);
+  const [favList, setFavList] = useState(false);
+  const [clubName, setClubName] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,16 +29,16 @@ function Body() {
     fetchData();
   }, []);
 
-  const continueFunction = (username, admin) => {
+  const continueFunction = (username, admin, club) => {
     setNameDisplay(username);
     setIsAdmin(admin);
+    setClubName(club);
     setLogin(false);
     setSignUp(false);
   };
 
   const updateLoginData = (account) => {
     setLoginData([...loginData, account]);
-    console.log(loginData);
   };
 
   const handleBack = () => {
@@ -43,7 +47,29 @@ function Body() {
     setLogin(false);
   };
 
-  if (loginPage) {
+  const handleBackAn = () => {
+    setClubEditing(false);
+  };
+
+  if (clubEditing) {
+    return (
+      <>
+        <Announcement
+          setClubData={setClubData}
+          clubData={clubData}
+          clubName={clubName}
+          handleBackAn={handleBackAn}
+        />
+        <Club clubData={clubData} />
+      </>
+    );
+  } else if (favList) {
+    return (
+      <>
+        <h1>Fav list</h1>
+      </>
+    );
+  } else if (loginPage) {
     return (
       <>
         <button
@@ -92,7 +118,11 @@ function Body() {
       <>
         <div>
           <h1>Welcome, {nameDisplay}</h1>
-          {isAdmin ? <button>My Club</button> : <button>My Favorites</button>}
+          {isAdmin ? (
+            <button onClick={() => setClubEditing(true)}>My Club</button>
+          ) : (
+            <button onClick={() => setFavList(true)}>My Favorites</button>
+          )}
           <button onClick={() => setLoginPage(true)}>Log Out</button>
           <Club clubData={clubData} />
         </div>
